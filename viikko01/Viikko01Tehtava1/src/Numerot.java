@@ -1,4 +1,3 @@
-import java.util.stream.Stream;
 import java.util.stream.Collectors;
 
 public class Numerot {
