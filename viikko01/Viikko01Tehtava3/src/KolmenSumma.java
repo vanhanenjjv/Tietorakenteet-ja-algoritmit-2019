@@ -1,9 +1,13 @@
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 public class KolmenSumma {
     int laske(int x) {
-        ArrayList<int[]> combinations = new ArrayList<int[]>();
+        Set<List<Integer>> combinations = new HashSet<List<Integer>>();
 
         for (int i = 1; i < x; ++i) {
             for (int j = 1; j < x; ++j) {
@@ -14,16 +18,14 @@ public class KolmenSumma {
                     if (k == i || k == j)
                         continue;
 
-                    if (i + j + k == x) {       
-                        int[] combination = new int[] { i, j, k };
-                        Arrays.sort(combination);
+                    if (i + j + k == x)
+                        continue;   
+                          
+                    List<Integer> combination = Stream.of(new Integer[] { i, j, k })
+                        .sorted()
+                        .collect(Collectors.toList());
 
-                        boolean exists = combinations.stream()
-                            .anyMatch(c -> Arrays.equals(c, combination));
-                        
-                        if (!exists)
-                            combinations.add(combination);
-                    }                  
+                    combinations.add(combination);               
                 }
             }
         }
