@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,7 +19,7 @@ public class KolmenSumma {
                     if (k == i || k == j)
                         continue;
 
-                    if (i + j + k == x)
+                    if (i + j + k != x)
                         continue;   
                           
                     List<Integer> combination = Stream.of(new Integer[] { i, j, k })
